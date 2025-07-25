@@ -1,143 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trivox - Your Workflows. Your Rules.</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    :root {
-      --accent-cyan: #00e0ff;
-      --accent-purple: #a259ff;
-      --background-dark: #0f0f0f;
-      --background-hover: #1a1a1a;
-      --text-light: #ffffff;
-      --highlight: #332e66;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trivox - Your Workflows. Your Rules.</title>
+    <link rel="icon" href="assets/logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <style>
+        :root {
+            --accent-cyan: #00e0ff;
+            --accent-purple: #a259ff;
+            --background-dark: #0f0f0f;
+            --background-hover: #1a1a1a;
+            --text-light: #ffffff;
+            --highlight: #332e66;
+        }
 
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--background-dark);
-      color: var(--text-light);
-      margin: 0;
-    }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            margin: 0;
+        }
 
-    a {
-      color: var(--accent-cyan);
-      text-decoration: none;
-    }
+        a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+        }
 
-    a:hover {
-      color: var(--accent-purple);
-    }
+        a:hover {
+            color: var(--accent-purple);
+        }
 
-    .hero {
-      padding: 5rem 1rem;
-      text-align: center;
-      background: linear-gradient(to right, #1f1f1f, #121212);
-      border-bottom: 1px solid var(--highlight);
-    }
+        .hero {
+            padding: 5rem 1rem;
+            text-align: center;
+            background: linear-gradient(to right, #1f1f1f, #121212);
+            border-bottom: 1px solid var(--highlight);
+        }
 
-    .btn-accent {
-      background-color: var(--accent-purple);
-      color: white;
-      border: none;
-    }
+        .btn-accent {
+            background-color: var(--accent-purple);
+            color: white;
+            border: none;
+        }
 
-    .btn-accent:hover {
-      background-color: #8f5eff;
-    }
+        .btn-accent:hover {
+            background-color: #8f5eff;
+        }
 
-    .section {
-      padding: 4rem 1rem;
-    }
+        .section {
+            padding: 4rem 1rem;
+        }
 
-    .section-title {
-      margin-bottom: 1.5rem;
-      font-weight: 600;
-      color: var(--accent-cyan);
-    }
+        .section-title {
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-cyan);
+        }
 
-    ul {
-      list-style: square;
-      padding-left: 1.5rem;
-    }
+        ul {
+            list-style: square;
+            padding-left: 1.5rem;
+        }
 
-    footer {
-      text-align: center;
-      padding: 2rem 1rem 1rem;
-      background-color: #121212;
-      font-size: 0.9rem;
-      color: #aaa;
-    }
+        footer {
+            text-align: center;
+            padding: 2rem 1rem 1rem;
+            background-color: #121212;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
 
-    footer a {
-      color: var(--accent-purple);
-      margin: 0 0.5rem;
-    }
+        footer a {
+            color: var(--accent-purple);
+            margin: 0 0.5rem;
+        }
 
-    .divider {
-      border-top: 1px solid var(--highlight);
-      margin: 4rem auto;
-      width: 80%;
-    }
-  </style>
+        .divider {
+            border-top: 1px solid var(--highlight);
+            margin: 4rem auto;
+            width: 80%;
+        }
+    </style>
 </head>
 <body>
 
-  <header class="hero">
-    <h1 class="display-5 fw-bold">Your Workflows. Your Rules.</h1>
-    <p class="lead">Trivox is a CLI-first automation engine for creators and developers.</p>
-    <a href="https://github.com/trivox-io" class="btn btn-accent btn-lg mt-4">Get Started</a>
-  </header>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-black sticky-top">
+            <div class="container">
+                <a class="navbar-brand text-white" href="">
+                    <img src="assets/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+                    Trivox
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" href="https://docs.trivox.io" target="_blank">Docs</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="hero">
+            <h1 class="display-5 fw-bold">Your Workflows. Your Rules.</h1>
+            <p class="lead">Trivox is a CLI-first automation engine for creators and developers.</p>
+            <a href="https://github.com/trivox-io" class="btn btn-accent btn-lg mt-4">Get Started</a>
+        </div>
+    </header>
 
-  <section class="section container">
-    <h2 class="section-title">What is Trivox</h2>
-    <p>
-      Trivox helps you turn raw ideas into structured workflows — using Python, AI, and clean logic.
-      It's designed for developers who prefer full control and want to evolve their workflows over time.
-    </p>
-  </section>
+    <section class="section container">
+        <h2 class="section-title">What is Trivox</h2>
+        <p>
+        Trivox helps you turn raw ideas into structured workflows — using Python, AI, and clean logic.
+        It's designed for developers who prefer full control and want to evolve their workflows over time.
+        </p>
+    </section>
 
-  <div class="divider"></div>
+    <div class="divider"></div>
 
-  <section class="section container">
-    <h2 class="section-title">What You Can Build</h2>
-    <ul>
-      <li>Automate creative content pipelines</li>
-      <li>Convert brainstorms into scoped projects</li>
-      <li>Run prompt-chained AI tasks</li>
-      <li>Create structured versions of creative ideas</li>
-    </ul>
-  </section>
+    <section class="section container">
+        <h2 class="section-title">What You Can Build</h2>
+        <ul>
+        <li>Automate creative content pipelines</li>
+        <li>Convert brainstorms into scoped projects</li>
+        <li>Run prompt-chained AI tasks</li>
+        <li>Create structured versions of creative ideas</li>
+        </ul>
+    </section>
 
-  <div class="divider"></div>
+    <div class="divider"></div>
 
-  <section class="section container">
-    <h2 class="section-title">Why It’s Different</h2>
-    <ul>
-      <li>Dev-first (not no-code)</li>
-      <li>AI where it helps — not where it controls</li>
-      <li>Modular, versioned, local-friendly</li>
-      <li>Terminal-first, but extendable to GUI</li>
-    </ul>
-  </section>
+    <section class="section container">
+        <h2 class="section-title">Why It’s Different</h2>
+        <ul>
+        <li>Dev-first (not no-code)</li>
+        <li>AI where it helps — not where it controls</li>
+        <li>Modular, versioned, local-friendly</li>
+        <li>Terminal-first, but extendable to GUI</li>
+        </ul>
+    </section>
 
-  <div class="divider"></div>
+    <div class="divider"></div>
 
-  <section class="section container text-center">
-    <h2 class="section-title">Get Involved</h2>
-    <p>Trivox is in active development. Want to help? We’re open to feedback, contributions, and support.</p>
-    <a href="https://github.com/trivox-io" class="btn btn-outline-light mt-2">Visit our GitHub Organization</a>
-  </section>
+    <section class="section container text-center">
+        <h2 class="section-title">Get Involved</h2>
+        <p>Trivox is in active development. Want to help? We’re open to feedback, contributions, and support.</p>
+        <a href="https://github.com/trivox-io" class="btn btn-outline-light mt-2">Visit our GitHub Organization</a>
+    </section>
 
-  <footer>
-    &copy; 2025 Trivox. Built by creators for creators.
-    <br />
-    <a href="https://github.com/trivox-io"><i class="fa-brands fa-github"></i> GitHub</a> |
-    <a href="https://discord.gg/ER9Sryjd"><i class="fa-brands fa-discord"></i> Discord</a>
-  </footer>
+    <footer>
+        &copy; 2025 Trivox. Built by creators for creators.
+        <br />
+        <a href="https://github.com/trivox-io"><i class="fa-brands fa-github"></i> GitHub</a> |
+        <a href="https://discord.gg/ER9Sryjd"><i class="fa-brands fa-discord"></i> Discord</a>
+    </footer>
 
-  <script src="https://kit.fontawesome.com/a3c1e4f0c7.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
 </body>
 </html>
