@@ -1,165 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trivox - Your Workflows. Your Rules.</title>
-    <link rel="icon" href="assets/logo.png" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <style>
-        :root {
-            --accent-cyan: #00e0ff;
-            --accent-purple: #a259ff;
-            --background-dark: #0f0f0f;
-            --background-hover: #1a1a1a;
-            --text-light: #ffffff;
-            --highlight: #332e66;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trivox - Tools, pipelines, and playable experiments.</title>
 
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: var(--background-dark);
-            color: var(--text-light);
-            margin: 0;
-        }
+  <link rel="icon" href="assets/logo.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 
-        a {
-            color: var(--accent-cyan);
-            text-decoration: none;
-        }
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PCC4TNSV');</script>
+  <!-- End Google Tag Manager -->
 
-        a:hover {
-            color: var(--accent-purple);
-        }
+  <style>
+    :root {
+      --accent-cyan: #00e0ff;
+      --accent-purple: #a259ff;
+      --background-dark: #0f0f0f;
+      --background-hover: #1a1a1a;
+      --text-light: #ffffff;
+      --highlight: #332e66;
+      --card-bg: #121212;
+      --card-border: #232323;
+      --muted: #a7a7a7;
+    }
 
-        .hero {
-            padding: 5rem 1rem;
-            text-align: center;
-            background: linear-gradient(to right, #1f1f1f, #121212);
-            border-bottom: 1px solid var(--highlight);
-        }
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: var(--background-dark);
+      color: var(--text-light);
+      margin: 0;
+    }
 
-        .btn-accent {
-            background-color: var(--accent-purple);
-            color: white;
-            border: none;
-        }
+    a { color: var(--accent-cyan); text-decoration: none; }
+    a:hover { color: var(--accent-purple); }
 
-        .btn-accent:hover {
-            background-color: #8f5eff;
-        }
+    .hero {
+      padding: 5rem 1rem;
+      text-align: center;
+      background: linear-gradient(to right, #151515, #0f0f0f);
+      border-bottom: 1px solid var(--highlight);
+    }
 
-        .section {
-            padding: 4rem 1rem;
-        }
+    .btn-accent {
+      background-color: var(--accent-purple);
+      color: white;
+      border: none;
+    }
+    .btn-accent:hover { background-color: #8f5eff; }
 
-        .section-title {
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            color: var(--accent-cyan);
-        }
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid #2b2b2b;
+      color: var(--text-light);
+    }
+    .btn-ghost:hover {
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
 
-        ul {
-            list-style: square;
-            padding-left: 1.5rem;
-        }
+    .section { padding: 4rem 1rem; }
+    .section-title {
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      color: var(--accent-cyan);
+    }
 
-        footer {
-            text-align: center;
-            padding: 2rem 1rem 1rem;
-            background-color: #121212;
-            font-size: 0.9rem;
-            color: #aaa;
-        }
+    ul { list-style: square; padding-left: 1.5rem; }
 
-        footer a {
-            color: var(--accent-purple);
-            margin: 0 0.5rem;
-        }
+    .divider {
+      border-top: 1px solid var(--highlight);
+      margin: 4rem auto;
+      width: 80%;
+    }
 
-        .divider {
-            border-top: 1px solid var(--highlight);
-            margin: 4rem auto;
-            width: 80%;
-        }
-    </style>
+    .cardx {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      height: 100%;
+    }
+
+    .card-titlex {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .tags span {
+      display: inline-block;
+      font-size: 0.85rem;
+      padding: 0.25rem 0.5rem;
+      border: 1px solid #2b2b2b;
+      border-radius: 999px;
+      margin-right: 0.4rem;
+      margin-top: 0.4rem;
+      color: #cfcfcf;
+    }
+
+    .badge-soft {
+      display: inline-block;
+      font-size: 0.8rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid #2b2b2b;
+      color: #cfcfcf;
+      margin-left: 0.5rem;
+    }
+
+    .muted { color: var(--muted); }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+      background-color: #121212;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+    footer a { color: var(--accent-purple); margin: 0 0.5rem; }
+  </style>
 </head>
+
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PCC4TNSV"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
-    <header>
-        <nav class="navbar navbar-expand-lg bg-black sticky-top">
-            <div class="container">
-                <a class="navbar-brand text-white" href="">
-                    <img src="assets/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-                    Trivox
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="https://docs.trivox.io" target="_blank">Docs</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div class="hero">
-            <h1 class="display-5 fw-bold">Your Workflows. Your Rules.</h1>
-            <p class="lead">Trivox is a CLI-first automation engine for creators and developers.</p>
-            <a href="https://github.com/trivox-io" class="btn btn-accent btn-lg mt-4">Get Started</a>
+    <nav class="navbar navbar-expand-lg bg-black sticky-top">
+      <div class="container">
+        <a class="navbar-brand text-white" href="/">
+          <img src="assets/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+          Trivox
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link text-light" href="#projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link text-light" href="#games">Games</a></li>
+            <li class="nav-item"><a class="nav-link text-light" href="#about">About</a></li>
+          </ul>
         </div>
-    </header>
+      </div>
+    </nav>
+  <header>
 
-    <section class="section container">
-        <h2 class="section-title">What is Trivox</h2>
-        <p>
-        Trivox helps you turn raw ideas into structured workflows — using Python, AI, and clean logic.
-        It's designed for developers who prefer full control and want to evolve their workflows over time.
-        </p>
-    </section>
+    <div class="hero">
+      <h1 class="display-5 fw-bold">Tools, pipelines, and playable experiments.</h1>
+      <p class="lead">
+        Practical engineering for creative work: game/VFX tooling, DevEx utilities,
+        and small game-tech builds that actually ship.
+      </p>
+      <a href="https://github.com/trivox-io" class="btn btn-accent btn-lg mt-4 me-2" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://rincorpes.itch.io/" class="btn btn-ghost btn-lg mt-4" target="_blank" rel="noopener noreferrer">Itch</a>
+    </div>
+  </header>
 
-    <div class="divider"></div>
+  <section class="section container">
+    <h2 class="section-title">What is Trivox</h2>
+    <p>
+      Trivox is a portfolio ecosystem focused on one theme:
+      <strong>reducing friction in creative production</strong>.
+      It’s where I build and share tools that keep workflows clean, reproducible, and shippable.
+    </p>
+    <ul class="muted">
+      <li>pipeline tools and DCC integrations</li>
+      <li>internal platform / DevEx utilities</li>
+      <li>game-tech experiments and small releases</li>
+    </ul>
+  </section>
 
-    <section class="section container">
-        <h2 class="section-title">What You Can Build</h2>
-        <ul>
-        <li>Automate creative content pipelines</li>
-        <li>Convert brainstorms into scoped projects</li>
-        <li>Run prompt-chained AI tasks</li>
-        <li>Create structured versions of creative ideas</li>
-        </ul>
-    </section>
+  <div class="divider"></div>
 
-    <div class="divider"></div>
+  <!-- PROJECTS (only Mini Arcade + Evolving Ideas for now) -->
+  <section id="projects" class="section container">
+    <h2 class="section-title">Projects</h2>
 
-    <section class="section container">
-        <h2 class="section-title">Why It’s Different</h2>
-        <ul>
-        <li>Dev-first (not no-code)</li>
-        <li>AI where it helps — not where it controls</li>
-        <li>Modular, versioned, local-friendly</li>
-        <li>Terminal-first, but extendable to GUI</li>
-        </ul>
-    </section>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="cardx">
+          <div class="card-titlex">
+            Mini Arcade <span class="badge-soft">(WIP)</span>
+          </div>
+          <p class="muted">
+            A Python-first mini game engine + arcade games playground.
+            Built to validate architecture, multiple backends, and shipping workflows.
+          </p>
+          <div class="tags">
+            <span>Python</span><span>Game Tech</span><span>Backends</span>
+          </div>
+          <div class="mt-3">
+            <a href="https://github.com/trivox-io/mini-arcade" target="_blank" rel="noopener noreferrer">Repo →</a>
+            <span class="muted"> · </span>
+            <a href="https://docs.trivox.io" target="_blank" rel="noopener noreferrer">Docs (soon) →</a>
+          </div>
+          <div class="mt-2 muted" style="font-size: 0.9rem;">
+            Source will be published once the monorepo is ready.
+          </div>
+        </div>
+      </div>
 
-    <div class="divider"></div>
+      <div class="col-md-6">
+        <div class="cardx">
+          <div class="card-titlex">
+            Evolving Ideas <span class="badge-soft">(WIP)</span>
+          </div>
+          <p class="muted">
+            CLI-first structured brainstorming with versioned ideas.
+            A small lab tool that will later plug into pre-production workflows.
+          </p>
+          <div class="tags">
+            <span>CLI</span><span>YAML</span><span>R&amp;D</span>
+          </div>
+          <div class="mt-3">
+            <a href="https://github.com/trivox-io/evolving-ideas" target="_blank" rel="noopener noreferrer">Repo →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section class="section container text-center">
-        <h2 class="section-title">Get Involved</h2>
-        <p>Trivox is in active development. Want to help? We’re open to feedback, contributions, and support.</p>
-        <a href="https://github.com/trivox-io" class="btn btn-outline-light mt-2">Visit our GitHub Organization</a>
-    </section>
+  <div class="divider"></div>
 
-    <footer>
-        &copy; 2025 Trivox. Built by creators for creators.
-        <br />
-        <a href="https://github.com/trivox-io"><i class="fa-brands fa-github"></i> GitHub</a> |
-        <a href="https://discord.gg/ER9Sryjd"><i class="fa-brands fa-discord"></i> Discord</a>
-    </footer>
+  <!-- GAMES SECTION (cards live here now) -->
+  <section id="games" class="section container">
+    <h2 class="section-title">Games</h2>
+    <p class="muted mb-4">
+      Small arcade games built as real testbeds for engine features. Releases land on Itch.
+    </p>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="cardx">
+          <div class="card-titlex">Deja Bounce <span class="badge-soft">(Playable)</span></div>
+          <p class="muted">
+            Pong-like arena prototype to validate runtime loop, input flow, difficulty presets,
+            and capture hooks.
+          </p>
+          <div class="tags">
+            <span>Arcade</span><span>Pong</span><span>Difficulty</span>
+          </div>
+          <div class="mt-3">
+            <a href="https://github.com/alexsc6955/deja-bounce" target="_blank" rel="noopener noreferrer">Repo →</a>
+            <a href="https://rincorpes.itch.io/dejabounce" target="_blank" rel="noopener noreferrer">Play on Itch →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="cardx">
+          <div class="card-titlex">Space Invaders <span class="badge-soft">(Playable)</span></div>
+          <p class="muted">
+            Sprite + projectile prototype to validate rendering, cooldowns,
+            simple AI movement, and game feel tuning.
+          </p>
+          <div class="tags">
+            <span>Sprites</span><span>Projectiles</span><span>Cooldowns</span>
+          </div>
+          <div class="mt-3">
+            <!-- <a href="https://rincorpes.itch.io/" target="_blank" rel="noopener noreferrer">Play on Itch →</a> -->
+            <a href="https://github.com/alexsc6955/space-invaders" target="_blank" rel="noopener noreferrer">Repo →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="cardx">
+          <div class="card-titlex">Asteroids <span class="badge-soft">(Next)</span></div>
+          <p class="muted">
+            Physics-focused prototype to validate movement integration, wrapping,
+            collisions, and “ship feel”.
+          </p>
+          <div class="tags">
+            <span>Physics</span><span>Collisions</span><span>Feel</span>
+          </div>
+          <div class="mt-3">
+            WIP
+            <!-- <a href="https://rincorpes.itch.io/" target="_blank" rel="noopener noreferrer">Releases on Itch →</a>
+            <a href="https://rincorpes.itch.io/" target="_blank" rel="noopener noreferrer">Releases on Itch →</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <a href="https://rincorpes.itch.io/" target="_blank" rel="noopener noreferrer">See all releases on Itch →</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT (embedded on landing) -->
+  <section id="about" class="section container">
+    <h2 class="section-title">About</h2>
+    <p class="muted">
+      I’m Santiago — a Senior Python Developer focused on tools & pipelines for games, VFX, and content creators.
+      I build framework-y “glue” systems: DCC integrations, automation, DevEx utilities, and small game-tech experiments.
+    </p>
+    <p class="muted mb-0">
+      If you’re building for artists (or building as one) and want workflows that don’t fight you —
+      you’ll probably like what’s here.
+    </p>
+
+    <div class="mt-3">
+      <a href="https://github.com/alexsc6955" target="_blank" rel="noopener noreferrer">GitHub →</a>
+      <span class="muted"> · </span>
+      <a href="https://www.linkedin.com/in/alexsc6955/" target="_blank" rel="noopener noreferrer">LinkedIn →</a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 Trivox.
+    <br />
+    By <a href="https://github.com/alexsc6955" target="_blank" rel="noopener noreferrer">Santiago</a>
+    <span class="muted"> · </span>
+    <a href="https://github.com/trivox-io" target="_blank" rel="noopener noreferrer">Trivox GitHub</a>
+    <span class="muted"> · </span>
+    <a href="https://rincorpes.itch.io/" target="_blank" rel="noopener noreferrer">Itch</a>
+    <span class="muted"> · </span>
+    <a href="https://discord.gg/ER9Sryjd" target="_blank"><i class="fa-brands fa-discord"></i> Discord</a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
 </body>
 </html>
