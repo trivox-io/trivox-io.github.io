@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Incident 02:13 — Don't Come Home</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <!-- // signal present — node active — do not cache // -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ── Landing ─────────────────────────────────────────────────────────── -->
+  <div id="landing">
+    <div class="timestamp">02:13</div>
+    <h1 class="arg-title">DON'T COME HOME</h1>
+    <p class="arg-subtitle">// INCIDENT 02:13 //</p>
+
+    <p id="return-message" class="return-msg hidden" aria-live="polite"></p>
+
+    <p class="intro-text">
+      Your phone lights up at 2:13 AM.<br>
+      One message. Unknown number.<br><br>
+      <em>Don't come home. Something inside the apartment learned my voice.</em>
+    </p>
+
+    <button id="begin-btn" class="btn-begin" type="button">[ BEGIN ]</button>
+
+    <div class="landing-footer">
+      <a href="../" class="back-link">← trivox.io</a>
+      <span class="sep">·</span>
+      <a href="logs.html" class="back-link">incident logs</a>
+      <span class="sep">·</span>
+      <a href="mirror.html" class="back-link">fragment-7</a>
+    </div>
+  </div>
+
+  <!-- ── Story screen ─────────────────────────────────────────────────────── -->
+  <div id="story-screen" class="hidden" aria-live="polite">
+    <div class="scene-container">
+      <div id="scene-title" class="scene-title"></div>
+      <div id="scene-text" class="scene-text"></div>
+      <div id="choices" class="choices" role="group" aria-label="Choose your action"></div>
+    </div>
+  </div>
+
+  <!-- ── Ending screen ────────────────────────────────────────────────────── -->
+  <div id="ending-screen" class="hidden" aria-live="polite">
+    <div class="ending-container">
+      <div id="ending-label" class="ending-label"></div>
+      <div id="ending-text" class="ending-text"></div>
+      <div id="ending-stats"></div>
+      <div id="ending-hint"></div>
+      <button id="restart-btn" class="btn-restart" type="button">[ PLAY AGAIN ]</button>
+      <div class="ending-footer">
+        <a href="../">← trivox.io</a>
+        <span class="sep">·</span>
+        <a href="logs.html">incident logs</a>
+        <span class="sep">·</span>
+        <a href="mirror.html">recovered transcript</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="story.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
