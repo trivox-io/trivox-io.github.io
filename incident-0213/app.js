@@ -89,8 +89,12 @@
     var returnMsg = document.getElementById("return-message");
     if (attempts > 0 && returnMsg) {
       returnMsg.classList.remove("hidden");
+      var prefix =
+        attempts === 1 ? "You came back. " :
+        attempts === 2 ? "This is not your first pass. " :
+        "You always return to this point. ";
       returnMsg.textContent =
-        "[ Attempt " + (attempts + 1) + " detected. Memory fragments partially intact. ]";
+        prefix + "[ Attempt " + (attempts + 1) + " detected. Memory fragments partially intact. ]";
     } else if (returnMsg) {
       returnMsg.classList.add("hidden");
     }
@@ -229,6 +233,9 @@
   // ── Init ──────────────────────────────────────────────────────────────────
 
   document.addEventListener("DOMContentLoaded", function () {
+    // // 02:13 — pattern node active — visitor logged — key: incident_0213_attempts //
+    console.warn("// 02:13 — signal present — if you found this: you are already inside the pattern //");
+
     landingEl = document.getElementById("landing");
     storyEl = document.getElementById("story-screen");
     endingEl = document.getElementById("ending-screen");
