@@ -135,6 +135,26 @@
       user-select: none;
       pointer-events: none;
     }
+
+    /* ── ARG footer link (subtle, for the curious) ── */
+    .incident-footerlink {
+      color: #3d3d3d;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      margin-top: 0.5rem;
+      display: inline-block;
+      transition: color 0.2s;
+    }
+    .incident-footerlink:hover {
+      color: var(--accent-cyan);
+      animation: incident-flicker 0.35s ease;
+    }
+    @keyframes incident-flicker {
+      0%, 100% { opacity: 1; }
+      30%       { opacity: 0.4; }
+      60%       { opacity: 0.9; }
+      80%       { opacity: 0.6; }
+    }
   </style>
 </head>
 
@@ -341,7 +361,8 @@
     <span class="muted"> · </span>
     <a href="https://discord.gg/ER9Sryjd" target="_blank"><i class="fa-brands fa-discord"></i> Discord</a>
     <br>
-    <a href="/incident-0213/" style="color: #2e2e2e; font-size: 0.72rem; letter-spacing: 0.08em; margin-top: 0.5rem; display: inline-block;">incident archive</a>
+    <!-- // 02:13 — if you're reading this, you already know // -->
+    <a href="/incident-0213/" class="incident-footerlink" aria-label="incident archive signal 02:13">incident archive // 02:13</a>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
