@@ -10,6 +10,8 @@
 
   <!-- // 02:13 — signal detected — /incident-0213/ // -->
 
+  <meta name="signal" content="02:13 — don't come home — /incident-0213/">
+
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -125,6 +127,14 @@
       color: #aaa;
     }
     footer a { color: var(--accent-purple); margin: 0 0.5rem; }
+
+    .arg-signal {
+      color: inherit;
+      opacity: 0;
+      font-size: 0;
+      user-select: none;
+      pointer-events: none;
+    }
   </style>
 </head>
 
@@ -157,7 +167,7 @@
   <header>
 
     <div class="hero">
-      <h1 class="display-5 fw-bold">Tools, pipelines, and playable experiments.</h1>
+      <h1 class="display-5 fw-bold">Tools, pipelines, and playable experiments.<a href="/incident-0213/" class="arg-signal" aria-hidden="true" tabindex="-1">​</a></h1>
       <p class="lead">
         Practical engineering for creative work: game/VFX tooling, DevEx utilities,
         and small game-tech builds that actually ship.
