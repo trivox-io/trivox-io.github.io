@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trivox - Tools, pipelines, and playable experiments.</title>
+  <title>Trivox - AI-powered tools, workflow systems, and game-tech products.</title>
 
   <link rel="icon" href="assets/logo.png" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 
   <!-- // 02:13 — signal detected — /incident-0213/ // -->
@@ -22,111 +25,608 @@
 
   <style>
     :root {
-      --accent-cyan: #00e0ff;
-      --accent-purple: #a259ff;
-      --background-dark: #0f0f0f;
-      --background-hover: #1a1a1a;
-      --text-light: #ffffff;
-      --highlight: #332e66;
-      --card-bg: #121212;
-      --card-border: #232323;
-      --muted: #a7a7a7;
+      --obsidian: #0a0a0b;
+      --carbon: #14161a;
+      --graphite: #22262d;
+      --steel: #8c96a3;
+      --bone: #e8e1d6;
+      --ivory: #f5f2eb;
+      --signal-violet: #7c5cff;
+      --cold-cyan: #6aa9ff;
+      --surface-1: rgba(20, 22, 26, 0.92);
+      --surface-2: rgba(34, 38, 45, 0.9);
+      --surface-border: rgba(140, 150, 163, 0.2);
+      --surface-border-strong: rgba(140, 150, 163, 0.34);
+      --glow-violet: 0 0 0 1px rgba(124, 92, 255, 0.16), 0 12px 32px rgba(124, 92, 255, 0.12);
+      --glow-cyan: 0 0 0 1px rgba(106, 169, 255, 0.14), 0 10px 30px rgba(106, 169, 255, 0.08);
+      --text-main: var(--ivory);
+      --text-muted: var(--steel);
+      --mono: "JetBrains Mono", monospace;
+      --body: "Inter", sans-serif;
+      --display: "Space Grotesk", sans-serif;
     }
+
+    * { box-sizing: border-box; }
 
     body {
-      font-family: "Segoe UI", sans-serif;
-      background-color: var(--background-dark);
-      color: var(--text-light);
+      font-family: var(--body);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(124, 92, 255, 0.12), transparent 26%),
+        radial-gradient(circle at 50% 18%, rgba(106, 169, 255, 0.05), transparent 18%),
+        linear-gradient(180deg, #101115 0%, var(--obsidian) 36%, #09090a 100%);
+      color: var(--text-main);
       margin: 0;
+      min-height: 100vh;
+      letter-spacing: -0.01em;
     }
 
-    a { color: var(--accent-cyan); text-decoration: none; }
-    a:hover { color: var(--accent-purple); }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(90deg, transparent 0, rgba(245, 242, 235, 0.025) 50%, transparent 100%),
+        repeating-linear-gradient(
+          to bottom,
+          transparent 0,
+          transparent 27px,
+          rgba(245, 242, 235, 0.015) 28px
+        );
+      pointer-events: none;
+      opacity: 0.5;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 18% 24%, rgba(124, 92, 255, 0.08), transparent 24%),
+        radial-gradient(circle at 82% 24%, rgba(124, 92, 255, 0.08), transparent 24%),
+        radial-gradient(circle at 50% 58%, rgba(106, 169, 255, 0.04), transparent 26%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    h1, h2, h3, .card-titlex, .navbar-brand {
+      font-family: var(--display);
+      letter-spacing: -0.03em;
+    }
+
+    code, .mono {
+      font-family: var(--mono);
+    }
+
+    a {
+      color: var(--bone);
+      text-decoration: none;
+      transition: color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    a:hover {
+      color: var(--signal-violet);
+    }
+
+    .site-nav {
+      background: rgba(10, 10, 11, 0.82) !important;
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(140, 150, 163, 0.12);
+    }
+
+    .navbar-brand {
+      color: var(--ivory) !important;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+    }
+
+    .nav-link {
+      color: var(--steel) !important;
+      font-family: var(--body);
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus {
+      color: var(--ivory) !important;
+    }
+
+    .navbar-toggler {
+      border-color: rgba(140, 150, 163, 0.22);
+    }
+
+    .navbar-toggler:focus {
+      box-shadow: var(--glow-violet);
+    }
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28245, 242, 235, 0.88%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
 
     .hero {
-      padding: 5rem 1rem;
-      text-align: center;
-      background: linear-gradient(to right, #151515, #0f0f0f);
-      border-bottom: 1px solid var(--highlight);
+      position: relative;
+      padding: 6.5rem 1rem 5rem;
+      border-bottom: 1px solid rgba(140, 150, 163, 0.16);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 24% 22%, rgba(124, 92, 255, 0.18), transparent 22%),
+        radial-gradient(circle at 76% 22%, rgba(124, 92, 255, 0.18), transparent 22%),
+        radial-gradient(circle at 50% 11%, rgba(106, 169, 255, 0.08), transparent 16%),
+        linear-gradient(180deg, rgba(245, 242, 235, 0.03), transparent 38%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+      gap: 2rem;
+      align-items: end;
+    }
+
+    .hero-copy {
+      max-width: 780px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+      line-height: 0.95;
+      max-width: 11ch;
+      margin-bottom: 1.25rem;
+      color: var(--ivory);
+    }
+
+    .hero p.lead {
+      color: var(--bone);
+      font-size: clamp(1.08rem, 2vw, 1.28rem);
+      line-height: 1.65;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-support {
+      max-width: 62ch;
+      line-height: 1.7;
+    }
+
+    .eyebrow,
+    .section-kicker,
+    .panel-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cold-cyan);
+      margin-bottom: 0.85rem;
+    }
+
+    .eyebrow::before,
+    .section-kicker::before,
+    .panel-label::before {
+      content: "";
+      width: 2.5rem;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(106, 169, 255, 0), rgba(106, 169, 255, 0.82));
+    }
+
+    .focus-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .focus-strip span,
+    .tags span,
+    .badge-soft {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      letter-spacing: 0.02em;
+      padding: 0.45rem 0.72rem;
+      border-radius: 999px;
+      border: 1px solid rgba(140, 150, 163, 0.18);
+      color: var(--steel);
+      background: rgba(20, 22, 26, 0.7);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 1rem;
+    }
+
+    .badge-soft {
+      margin-left: 0.55rem;
+      vertical-align: middle;
+    }
+
+    .focus-strip span::before,
+    .badge-soft::before {
+      content: "";
+      width: 0.35rem;
+      height: 0.35rem;
+      border-radius: 50%;
+      background: rgba(106, 169, 255, 0.85);
+      box-shadow: 0 0 12px rgba(106, 169, 255, 0.34);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 1.8rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.85rem 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
     }
 
     .btn-accent {
-      background-color: var(--accent-purple);
-      color: white;
-      border: none;
+      background: var(--signal-violet);
+      color: var(--ivory);
+      border: 1px solid rgba(124, 92, 255, 0.55);
+      box-shadow: var(--glow-violet);
     }
-    .btn-accent:hover { background-color: #8f5eff; }
+
+    .btn-accent:hover {
+      background: #8a6dff;
+      color: var(--ivory);
+    }
 
     .btn-ghost {
       background: transparent;
-      border: 1px solid #2b2b2b;
-      color: var(--text-light);
+      border: 1px solid rgba(140, 150, 163, 0.22);
+      color: var(--bone);
     }
+
     .btn-ghost:hover {
-      border-color: var(--accent-cyan);
-      color: var(--accent-cyan);
+      border-color: rgba(106, 169, 255, 0.42);
+      color: var(--ivory);
+      box-shadow: var(--glow-cyan);
     }
 
-    .section { padding: 4rem 1rem; }
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      font-family: var(--mono);
+      font-size: 0.84rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-links a {
+      color: var(--steel);
+      border-bottom: 1px solid transparent;
+      padding-bottom: 0.12rem;
+    }
+
+    .hero-links a:hover {
+      color: var(--ivory);
+      border-color: rgba(124, 92, 255, 0.5);
+    }
+
+    .hero-panel,
+    .cardx,
+    .mini-point,
+    .proof-card {
+      background:
+        linear-gradient(180deg, rgba(34, 38, 45, 0.92) 0%, rgba(20, 22, 26, 0.96) 100%);
+      border: 1px solid var(--surface-border);
+      border-radius: 20px;
+      box-shadow: inset 0 1px 0 rgba(245, 242, 235, 0.03);
+    }
+
+    .hero-panel {
+      padding: 1.25rem;
+      position: relative;
+    }
+
+    .hero-panel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      box-shadow: inset 0 0 0 1px rgba(124, 92, 255, 0.08);
+      pointer-events: none;
+    }
+
+    .signal-list {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .signal-item {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 0.85rem;
+      align-items: start;
+    }
+
+    .signal-index {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      color: var(--cold-cyan);
+      background: rgba(10, 10, 11, 0.8);
+      border: 1px solid rgba(106, 169, 255, 0.16);
+    }
+
+    .signal-item strong {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--ivory);
+      font-size: 0.98rem;
+    }
+
+    .signal-item p,
+    .panel-links a,
+    .section-intro,
+    .muted {
+      color: var(--text-muted);
+    }
+
+    .panel-divider {
+      height: 1px;
+      background: linear-gradient(90deg, rgba(140, 150, 163, 0), rgba(140, 150, 163, 0.28), rgba(140, 150, 163, 0));
+      margin: 1.15rem 0;
+    }
+
+    .panel-links {
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .panel-links a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem 0.95rem;
+      border-radius: 14px;
+      border: 1px solid rgba(140, 150, 163, 0.14);
+      background: rgba(10, 10, 11, 0.72);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+    }
+
+    .panel-links a span:last-child {
+      color: var(--bone);
+    }
+
+    .panel-links a:hover {
+      border-color: rgba(124, 92, 255, 0.36);
+      box-shadow: var(--glow-violet);
+      color: var(--ivory);
+    }
+
+    .section {
+      padding: 4.5rem 1rem;
+      position: relative;
+    }
+
     .section-title {
-      margin-bottom: 1.5rem;
-      font-weight: 600;
-      color: var(--accent-cyan);
+      margin-bottom: 0.85rem;
+      font-weight: 700;
+      color: var(--ivory);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
     }
 
-    ul { list-style: square; padding-left: 1.5rem; }
+    .section-intro {
+      max-width: 760px;
+      margin-bottom: 2rem;
+      line-height: 1.75;
+    }
+
+    ul {
+      list-style: square;
+      padding-left: 1.5rem;
+      color: var(--text-muted);
+    }
 
     .divider {
-      border-top: 1px solid var(--highlight);
-      margin: 4rem auto;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(140, 150, 163, 0), rgba(140, 150, 163, 0.26), rgba(140, 150, 163, 0));
+      margin: 0 auto;
       width: 80%;
     }
 
     .cardx {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 1.25rem;
+      padding: 1.45rem;
       height: 100%;
+      transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
     }
 
     .card-titlex {
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1.16rem;
+      margin-bottom: 0.75rem;
+      color: var(--ivory);
+    }
+
+    .meta-label {
+      color: var(--bone);
+      font-weight: 600;
+    }
+
+    .mini-point {
+      padding: 1.25rem 1.2rem;
+      height: 100%;
+    }
+
+    .mini-point strong {
+      display: block;
+      margin-bottom: 0.45rem;
+      color: var(--bone);
+    }
+
+    .cardx:hover,
+    .proof-card:hover,
+    .mini-point:hover {
+      transform: translateY(-2px);
+      border-color: var(--surface-border-strong);
+      box-shadow: var(--glow-violet);
+    }
+
+    .proof-card {
+      padding: 1.2rem;
+      height: 100%;
+    }
+
+    .artifact-frame {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      border-radius: 16px;
+      border: 1px solid rgba(140, 150, 163, 0.16);
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(34, 38, 45, 0.74), rgba(10, 10, 11, 0.96)),
+        radial-gradient(circle at 50% 0%, rgba(124, 92, 255, 0.18), transparent 28%);
+      margin-bottom: 1.1rem;
+    }
+
+    .artifact-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, transparent 0, rgba(245, 242, 235, 0.04) 50%, transparent 100%),
+        repeating-linear-gradient(
+          to bottom,
+          transparent 0,
+          transparent 20px,
+          rgba(245, 242, 235, 0.03) 21px
+        );
+      pointer-events: none;
+    }
+
+    .artifact-head,
+    .artifact-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.72rem 0.9rem;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--steel);
+    }
+
+    .artifact-head {
+      border-bottom: 1px solid rgba(140, 150, 163, 0.14);
+    }
+
+    .artifact-footer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-top: 1px solid rgba(140, 150, 163, 0.14);
+      background: rgba(10, 10, 11, 0.72);
+    }
+
+    .artifact-state {
+      color: var(--cold-cyan);
+    }
+
+    .artifact-body {
+      padding: 1rem 0.9rem 2.8rem;
+    }
+
+    .artifact-line {
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(245, 242, 235, 0.38), rgba(245, 242, 235, 0.06));
+      margin-bottom: 0.7rem;
+    }
+
+    .artifact-line.short { width: 42%; }
+    .artifact-line.mid { width: 68%; }
+    .artifact-line.long { width: 92%; }
+
+    .artifact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .artifact-node {
+      min-height: 58px;
+      border-radius: 14px;
+      border: 1px solid rgba(140, 150, 163, 0.14);
+      background: rgba(10, 10, 11, 0.66);
+      padding: 0.75rem;
+    }
+
+    .artifact-node span {
+      display: block;
+      height: 6px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(106, 169, 255, 0.45), rgba(106, 169, 255, 0.04));
       margin-bottom: 0.5rem;
     }
 
-    .tags span {
-      display: inline-block;
-      font-size: 0.85rem;
-      padding: 0.25rem 0.5rem;
-      border: 1px solid #2b2b2b;
-      border-radius: 999px;
-      margin-right: 0.4rem;
-      margin-top: 0.4rem;
-      color: #cfcfcf;
+    .artifact-node span:last-child {
+      width: 60%;
+      margin-bottom: 0;
     }
 
-    .badge-soft {
-      display: inline-block;
-      font-size: 0.8rem;
-      padding: 0.2rem 0.55rem;
-      border-radius: 999px;
-      border: 1px solid #2b2b2b;
-      color: #cfcfcf;
-      margin-left: 0.5rem;
+    .proof-links {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
     }
 
-    .muted { color: var(--muted); }
+    .proof-links a {
+      font-family: var(--mono);
+      font-size: 0.81rem;
+      color: var(--steel);
+      border-bottom: 1px solid rgba(140, 150, 163, 0.18);
+    }
+
+    .proof-links a:hover {
+      color: var(--ivory);
+      border-color: rgba(124, 92, 255, 0.42);
+    }
 
     footer {
       text-align: center;
-      padding: 2rem 1rem 1rem;
-      background-color: #121212;
+      padding: 2.4rem 1rem 1.3rem;
+      background-color: rgba(10, 10, 11, 0.85);
+      border-top: 1px solid rgba(140, 150, 163, 0.12);
       font-size: 0.9rem;
-      color: #aaa;
+      color: var(--steel);
     }
-    footer a { color: var(--accent-purple); margin: 0 0.5rem; }
+
+    footer a {
+      color: var(--bone);
+      margin: 0 0.5rem;
+    }
 
     .arg-signal {
       color: inherit;
@@ -138,7 +638,7 @@
 
     /* ── ARG footer link (subtle, for the curious) ── */
     .incident-footerlink {
-      color: #3d3d3d;
+      color: rgba(140, 150, 163, 0.42);
       font-size: 0.72rem;
       letter-spacing: 0.08em;
       margin-top: 0.5rem;
@@ -146,7 +646,7 @@
       transition: color 0.2s;
     }
     .incident-footerlink:hover {
-      color: var(--accent-cyan);
+      color: var(--cold-cyan);
       animation: incident-flicker 0.35s ease;
     }
     @keyframes incident-flicker {
@@ -154,6 +654,43 @@
       30%       { opacity: 0.4; }
       60%       { opacity: 0.9; }
       80%       { opacity: 0.6; }
+    }
+
+    @media (max-width: 991px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 5.5rem;
+      }
+
+      .hero-title {
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .section {
+        padding: 4rem 1rem;
+      }
+
+      .hero-title {
+        font-size: clamp(2.3rem, 10vw, 3.2rem);
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-links {
+        gap: 0.8rem;
+      }
+
+      .focus-strip {
+        gap: 0.55rem;
+      }
     }
   </style>
 </head>
@@ -164,7 +701,7 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-    <nav class="navbar navbar-expand-lg bg-black sticky-top">
+    <nav class="navbar navbar-expand-lg sticky-top site-nav">
       <div class="container">
         <a class="navbar-brand text-white" href="/">
           <img src="assets/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
@@ -177,83 +714,259 @@
 
         <div class="collapse navbar-collapse" id="nav">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item"><a class="nav-link text-light" href="#projects">Projects</a></li>
-            <li class="nav-item"><a class="nav-link text-light" href="#games">Games</a></li>
+            <li class="nav-item"><a class="nav-link text-light" href="#products">Products</a></li>
+            <li class="nav-item"><a class="nav-link text-light" href="#proof">Proof</a></li>
+            <li class="nav-item"><a class="nav-link text-light" href="#games">Playable Builds</a></li>
             <li class="nav-item"><a class="nav-link text-light" href="#about">About</a></li>
           </ul>
         </div>
       </div>
     </nav>
-  <header>
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Trivox / Systems For Creation And Delivery</div>
+        <h1 class="hero-title">AI-powered tools, workflow systems, and game-tech products<a href="/incident-0213/" class="arg-signal" aria-hidden="true" tabindex="-1">​</a></h1>
+        <p class="lead">
+          Trivox is my ecosystem for building practical software that makes creation,
+          development, and shipping less painful.
+        </p>
+        <p class="muted hero-support mb-0">
+          It brings together AI workflow tools, internal-platform thinking, developer utilities,
+          and playable releases that validate the architecture in practice. The work is technical,
+          product-minded, and built to operate under real constraints.
+        </p>
+        <div class="focus-strip">
+          <span>AI workflow systems</span>
+          <span>Internal platforms</span>
+          <span>Creative tech</span>
+          <span>Game tooling</span>
+          <span>Shipped demos</span>
+        </div>
+        <div class="hero-actions">
+          <a href="#proof" class="btn btn-accent btn-lg">View Proof</a>
+          <a href="#products" class="btn btn-ghost btn-lg">Explore Products</a>
+        </div>
+        <div class="hero-links">
+          <a href="https://github.com/trivox-io" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://docs.trivox.io" target="_blank" rel="noopener noreferrer">Docs</a>
+          <a href="https://rincorpes.itch.io/" target="_blank" rel="noopener noreferrer">Itch</a>
+        </div>
+      </div>
 
-    <div class="hero">
-      <h1 class="display-5 fw-bold">Tools, pipelines, and playable experiments.<a href="/incident-0213/" class="arg-signal" aria-hidden="true" tabindex="-1">​</a></h1>
-      <p class="lead">
-        Practical engineering for creative work: game/VFX tooling, DevEx utilities,
-        and small game-tech builds that actually ship.
-      </p>
-      <a href="https://github.com/trivox-io" class="btn btn-accent btn-lg mt-4 me-2" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="https://rincorpes.itch.io/" class="btn btn-ghost btn-lg mt-4" target="_blank" rel="noopener noreferrer">Itch</a>
+      <aside class="hero-panel">
+        <div class="panel-label">Execution Surface</div>
+        <div class="signal-list">
+          <div class="signal-item">
+            <div class="signal-index">01</div>
+            <div>
+              <strong>Senior-engineer systems work</strong>
+              <p class="mb-0">Architecture, tooling, automation, and product decisions built to survive real production use.</p>
+            </div>
+          </div>
+          <div class="signal-item">
+            <div class="signal-index">02</div>
+            <div>
+              <strong>Human + machine workflows</strong>
+              <p class="mb-0">AI is treated as part of an operating system for work, not a detached novelty layer.</p>
+            </div>
+          </div>
+          <div class="signal-item">
+            <div class="signal-index">03</div>
+            <div>
+              <strong>Creative-tech validation</strong>
+              <p class="mb-0">Playable builds, docs, and framework releases act as proof that the systems actually ship.</p>
+            </div>
+          </div>
+        </div>
+        <div class="panel-divider"></div>
+        <div class="panel-links">
+          <a href="https://docs.trivox.io" target="_blank" rel="noopener noreferrer"><span>Product docs</span><span>Open →</span></a>
+          <a href="https://github.com/trivox-io/trivox-conductor" target="_blank" rel="noopener noreferrer"><span>Workflow platform artifact</span><span>View →</span></a>
+          <a href="https://rincorpes.itch.io/" target="_blank" rel="noopener noreferrer"><span>Playable release surface</span><span>Launch →</span></a>
+        </div>
+      </aside>
     </div>
   </header>
 
-  <section class="section container">
-    <h2 class="section-title">What is Trivox</h2>
-    <p>
-      Trivox is a portfolio ecosystem focused on one theme:
-      <strong>reducing friction in creative production</strong>.
-      It’s where I build and share tools that keep workflows clean, reproducible, and shippable.
+  <section id="proof" class="section container">
+    <div class="section-kicker">Proof</div>
+    <h2 class="section-title">Case studies, demos, and engineering notes</h2>
+    <p class="section-intro">
+      The site should feel credible because the work is visible. These surfaces are where architecture,
+      operator experience, product thinking, and technical execution become inspectable artifacts.
     </p>
-    <ul class="muted">
-      <li>pipeline tools and DCC integrations</li>
-      <li>internal platform / DevEx utilities</li>
-      <li>game-tech experiments and small releases</li>
-    </ul>
-  </section>
-
-  <div class="divider"></div>
-
-  <!-- PROJECTS (only Mini Arcade + Evolving Ideas for now) -->
-  <section id="projects" class="section container">
-    <h2 class="section-title">Projects</h2>
 
     <div class="row g-4">
-      <div class="col-md-6">
-        <div class="cardx">
-          <div class="card-titlex">
-            Mini Arcade <span class="badge-soft">(WIP)</span>
+      <div class="col-lg-4">
+        <article class="proof-card">
+          <div class="artifact-frame">
+            <div class="artifact-head">
+              <span>Case Study</span>
+              <span class="artifact-state">workflow platform</span>
+            </div>
+            <div class="artifact-body">
+              <div class="artifact-line long"></div>
+              <div class="artifact-line mid"></div>
+              <div class="artifact-line short"></div>
+              <div class="artifact-grid">
+                <div class="artifact-node"><span></span><span></span></div>
+                <div class="artifact-node"><span></span><span></span></div>
+              </div>
+            </div>
+            <div class="artifact-footer">
+              <span>trivox-conductor</span>
+              <span>python + pyside6</span>
+            </div>
           </div>
+          <div class="card-titlex">Internal Platform Work</div>
           <p class="muted">
-            A Python-first mini game engine + arcade games playground.
-            Built to validate architecture, multiple backends, and shipping workflows.
+            Productized workflow surfaces, desktop tooling, and systems architecture designed to reduce operator friction and keep production legible.
           </p>
+          <div class="proof-links">
+            <a href="https://github.com/trivox-io/trivox-conductor" target="_blank" rel="noopener noreferrer">View artifact →</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-lg-4">
+        <article class="proof-card">
+          <div class="artifact-frame">
+            <div class="artifact-head">
+              <span>Demo Preview</span>
+              <span class="artifact-state">public release</span>
+            </div>
+            <div class="artifact-body">
+              <div class="artifact-grid">
+                <div class="artifact-node"><span></span><span></span></div>
+                <div class="artifact-node"><span></span><span></span></div>
+                <div class="artifact-node"><span></span><span></span></div>
+                <div class="artifact-node"><span></span><span></span></div>
+              </div>
+              <div class="artifact-line long" style="margin-top: 1rem;"></div>
+              <div class="artifact-line mid"></div>
+            </div>
+            <div class="artifact-footer">
+              <span>itch releases</span>
+              <span>playable validation</span>
+            </div>
+          </div>
+          <div class="card-titlex">Demos And Playable Builds</div>
+          <p class="muted">
+            Small games and interaction-heavy builds that prove the stack works outside theory, documentation, and private tooling.
+          </p>
+          <div class="proof-links">
+            <a href="https://rincorpes.itch.io/" target="_blank" rel="noopener noreferrer">See releases →</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-lg-4">
+        <article class="proof-card">
+          <div class="artifact-frame">
+            <div class="artifact-head">
+              <span>Engineering Notes</span>
+              <span class="artifact-state">docs surface</span>
+            </div>
+            <div class="artifact-body">
+              <div class="artifact-line long"></div>
+              <div class="artifact-line long"></div>
+              <div class="artifact-line mid"></div>
+              <div class="artifact-line short"></div>
+            </div>
+            <div class="artifact-footer">
+              <span>docs.trivox.io</span>
+              <span>systems thinking</span>
+            </div>
+          </div>
+          <div class="card-titlex">Docs, Notes, And Product Thinking</div>
+          <p class="muted">
+            Structured writing and product documentation that make implementation choices, architecture, and workflow intent easier to inspect.
+          </p>
+          <div class="proof-links">
+            <a href="https://docs.trivox.io" target="_blank" rel="noopener noreferrer">Browse docs →</a>
+            <a href="https://docs.trivox.io/evolving-ideas/" target="_blank" rel="noopener noreferrer">Read product notes →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="products" class="section container">
+    <div class="section-kicker">Products</div>
+    <h2 class="section-title">Products</h2>
+    <p class="muted section-intro">
+      These are the product tracks inside Trivox. Each one targets a different layer of the same problem:
+      making practical software and production workflows easier to build, operate, and ship.
+    </p>
+
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="cardx">
+          <div class="card-titlex">Mini Arcade <span class="badge-soft">Game-Tech Product</span></div>
+          <p class="muted"><span class="meta-label">What it is:</span> A Python-first arcade framework and product line for building small playable games, validating runtime architecture, and testing shipping workflows.</p>
+          <p class="muted"><span class="meta-label">What problem it solves:</span> It reduces the overhead of prototyping mechanics, reusing engine patterns, and turning experiments into real releases.</p>
+          <p class="muted"><span class="meta-label">Who it is for:</span> Developers and technical creators working on lightweight games, gameplay prototypes, and reusable game-tech foundations.</p>
           <div class="tags">
-            <span>Python</span><span>Game Tech</span><span>Backends</span>
+            <span>Python</span><span>Framework</span><span>Game Tech</span><span>Shipping</span>
           </div>
           <div class="mt-3">
             <a href="https://github.com/trivox-io/mini-arcade" target="_blank" rel="noopener noreferrer">Repo →</a>
             <span class="muted"> · </span>
-            <a href="https://docs.trivox.io" target="_blank" rel="noopener noreferrer">Docs (soon) →</a>
-          </div>
-          <div class="mt-2 muted" style="font-size: 0.9rem;">
-            Source will be published once the monorepo is ready.
+            <a href="https://rincorpes.itch.io/" target="_blank" rel="noopener noreferrer">Playable Releases →</a>
           </div>
         </div>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-lg-6">
         <div class="cardx">
-          <div class="card-titlex">
-            Evolving Ideas <span class="badge-soft">(WIP)</span>
-          </div>
-          <p class="muted">
-            CLI-first structured brainstorming with versioned ideas.
-            A small lab tool that will later plug into pre-production workflows.
-          </p>
+          <div class="card-titlex">Ashframe <span class="badge-soft">Workflow System</span></div>
+          <p class="muted"><span class="meta-label">What it is:</span> A systems-oriented product track for structuring project architecture, production flows, and repeatable workflow foundations across creative and technical work.</p>
+          <p class="muted"><span class="meta-label">What problem it solves:</span> It tackles setup chaos, inconsistent processes, and the friction that slows teams down between idea, implementation, and delivery.</p>
+          <p class="muted"><span class="meta-label">Who it is for:</span> Solo builders and small teams that need a clearer operating layer for production without adopting heavyweight studio infrastructure.</p>
           <div class="tags">
-            <span>CLI</span><span>YAML</span><span>R&amp;D</span>
+            <span>Workflow Systems</span><span>Architecture</span><span>Ops</span>
           </div>
           <div class="mt-3">
+            <a href="https://docs.trivox.io" target="_blank" rel="noopener noreferrer">Docs Hub →</a>
+            <span class="muted"> · </span>
+            <a href="https://github.com/trivox-io" target="_blank" rel="noopener noreferrer">Trivox GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="cardx">
+          <div class="card-titlex">llmix <span class="badge-soft">AI Workflow Utility</span></div>
+          <p class="muted"><span class="meta-label">What it is:</span> An AI-oriented utility layer for composing model-powered tasks into practical development and creative workflows instead of isolated prompt experiments.</p>
+          <p class="muted"><span class="meta-label">What problem it solves:</span> It reduces prompt sprawl, context handoff friction, and the repetition that shows up when AI is used without a system around it.</p>
+          <p class="muted"><span class="meta-label">Who it is for:</span> Developers and technical creators who want AI to behave like part of the toolchain, not a detached assistant tab.</p>
+          <div class="tags">
+            <span>AI</span><span>LLM Workflows</span><span>Developer Tools</span>
+          </div>
+          <div class="mt-3">
+            <a href="https://github.com/trivox-io/llmx" target="_blank" rel="noopener noreferrer">Repo →</a>
+            <span class="muted"> · </span>
+            <a href="https://docs.trivox.io" target="_blank" rel="noopener noreferrer">Docs Hub →</a>
+          </div>
+          <div class="mt-2 muted" style="font-size: 0.9rem;">
+            Public repo currently lives under <code>llmx</code>.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="cardx">
+          <div class="card-titlex">Evolving Ideas <span class="badge-soft">Planning Product</span></div>
+          <p class="muted"><span class="meta-label">What it is:</span> A structured ideation and planning tool for turning rough concepts into organized, versioned systems that are easier to build from.</p>
+          <p class="muted"><span class="meta-label">What problem it solves:</span> It reduces the chaos of early exploration by giving ideas a practical shape before they become backlog, architecture, or product decisions.</p>
+          <p class="muted"><span class="meta-label">Who it is for:</span> Builders who move between brainstorming, product thinking, and implementation and need their thinking to stay legible over time.</p>
+          <div class="tags">
+            <span>CLI</span><span>Planning</span><span>Versioned Ideas</span>
+          </div>
+          <div class="mt-3">
+            <a href="https://docs.trivox.io/evolving-ideas/" target="_blank" rel="noopener noreferrer">Docs →</a>
+            <span class="muted"> · </span>
             <a href="https://github.com/trivox-io/evolving-ideas" target="_blank" rel="noopener noreferrer">Repo →</a>
           </div>
         </div>
@@ -263,26 +976,27 @@
 
   <div class="divider"></div>
 
-  <!-- GAMES SECTION (cards live here now) -->
   <section id="games" class="section container">
-    <h2 class="section-title">Games</h2>
-    <p class="muted mb-4">
-      Small arcade games built as real testbeds for engine features. Releases land on Itch.
+    <div class="section-kicker">Playables</div>
+    <h2 class="section-title">Games / Playable Experiments</h2>
+    <p class="muted section-intro">
+      Trivox is not just infrastructure. These playable builds are where the ecosystem gets pressure-tested through
+      mechanics, release loops, and real user-facing execution.
     </p>
 
     <div class="row g-4">
       <div class="col-md-4">
         <div class="cardx">
-          <div class="card-titlex">Deja Bounce <span class="badge-soft">(Playable)</span></div>
-          <p class="muted">
-            Pong-like arena prototype to validate runtime loop, input flow, difficulty presets,
-            and capture hooks.
-          </p>
+          <div class="card-titlex">Deja Bounce <span class="badge-soft">Playable</span></div>
+          <p class="muted"><span class="meta-label">What it is:</span> A fast arcade testbed built to validate the core loop, responsiveness, and moment-to-moment feel.</p>
+          <p class="muted"><span class="meta-label">What it proves:</span> It exercises runtime behavior, input flow, tuning, and the path from framework work to a public playable build.</p>
+          <p class="muted"><span class="meta-label">Who it is for:</span> Players, testers, and anyone who wants to see Trivox architecture expressed as a shipped game.</p>
           <div class="tags">
-            <span>Arcade</span><span>Pong</span><span>Difficulty</span>
+            <span>Arcade</span><span>Pygame</span><span>Gameplay Loop</span>
           </div>
           <div class="mt-3">
             <a href="https://github.com/alexsc6955/deja-bounce" target="_blank" rel="noopener noreferrer">Repo →</a>
+            <span class="muted"> · </span>
             <a href="https://rincorpes.itch.io/dejabounce" target="_blank" rel="noopener noreferrer">Play on Itch →</a>
           </div>
         </div>
@@ -290,16 +1004,14 @@
 
       <div class="col-md-4">
         <div class="cardx">
-          <div class="card-titlex">Space Invaders <span class="badge-soft">(Playable)</span></div>
-          <p class="muted">
-            Sprite + projectile prototype to validate rendering, cooldowns,
-            simple AI movement, and game feel tuning.
-          </p>
+          <div class="card-titlex">Space Invaders <span class="badge-soft">Playable Prototype</span></div>
+          <p class="muted"><span class="meta-label">What it is:</span> A classic shooter-inspired build used to work through rendering, projectiles, enemy behavior, and screen-level pacing.</p>
+          <p class="muted"><span class="meta-label">What it proves:</span> It validates reusable combat patterns, sprite workflows, and the practical edge of the game-tech stack.</p>
+          <p class="muted"><span class="meta-label">Who it is for:</span> Anyone tracking how Trivox turns reusable systems into concrete playables.</p>
           <div class="tags">
-            <span>Sprites</span><span>Projectiles</span><span>Cooldowns</span>
+            <span>Shooter</span><span>Sprites</span><span>Projectiles</span>
           </div>
           <div class="mt-3">
-            <!-- <a href="https://rincorpes.itch.io/" target="_blank" rel="noopener noreferrer">Play on Itch →</a> -->
             <a href="https://github.com/alexsc6955/space-invaders" target="_blank" rel="noopener noreferrer">Repo →</a>
           </div>
         </div>
@@ -307,18 +1019,17 @@
 
       <div class="col-md-4">
         <div class="cardx">
-          <div class="card-titlex">Asteroids <span class="badge-soft">(Next)</span></div>
-          <p class="muted">
-            Physics-focused prototype to validate movement integration, wrapping,
-            collisions, and “ship feel”.
-          </p>
+          <div class="card-titlex">Asteroids <span class="badge-soft">Next Build</span></div>
+          <p class="muted"><span class="meta-label">What it is:</span> A physics-focused prototype in progress for movement, collisions, and control feel.</p>
+          <p class="muted"><span class="meta-label">What it proves:</span> It extends the ecosystem into tighter motion systems and more demanding gameplay behavior.</p>
+          <p class="muted"><span class="meta-label">Who it is for:</span> Future players and collaborators following the product line as new playables land.</p>
           <div class="tags">
-            <span>Physics</span><span>Collisions</span><span>Feel</span>
+            <span>Physics</span><span>Collisions</span><span>Movement</span>
           </div>
           <div class="mt-3">
-            WIP
-            <!-- <a href="https://rincorpes.itch.io/" target="_blank" rel="noopener noreferrer">Releases on Itch →</a>
-            <a href="https://rincorpes.itch.io/" target="_blank" rel="noopener noreferrer">Releases on Itch →</a> -->
+            <a href="https://github.com/alexsc6955/asteroids" target="_blank" rel="noopener noreferrer">Repo →</a>
+            <span class="muted"> · </span>
+            <a href="https://rincorpes.itch.io/" target="_blank" rel="noopener noreferrer">Track Releases →</a>
           </div>
         </div>
       </div>
@@ -331,16 +1042,46 @@
 
   <div class="divider"></div>
 
-  <!-- ABOUT (embedded on landing) -->
+  <section id="why" class="section container">
+    <div class="section-kicker">Why</div>
+    <h2 class="section-title">Why Trivox Exists</h2>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="mini-point">
+          <strong>Reduce workflow friction</strong>
+          <span class="muted">Build systems that remove unnecessary overhead from planning, development, and creative production.</span>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mini-point">
+          <strong>Make practical tools</strong>
+          <span class="muted">Focus on software that earns its place through clarity, repeatability, and direct utility.</span>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mini-point">
+          <strong>Help builders move faster</strong>
+          <span class="muted">Support both teams and solo developers with products that make iteration and shipping more manageable.</span>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mini-point">
+          <strong>Bridge product, engineering, and creative work</strong>
+          <span class="muted">Connect technical systems with the realities of how ideas become pipelines, tools, and shipped experiences.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
   <section id="about" class="section container">
-    <h2 class="section-title">About</h2>
+    <div class="section-kicker">About</div>
+    <h2 class="section-title">About Santiago</h2>
     <p class="muted">
-      I’m Santiago — a Senior Python Developer focused on tools & pipelines for games, VFX, and content creators.
-      I build framework-y “glue” systems: DCC integrations, automation, DevEx utilities, and small game-tech experiments.
-    </p>
-    <p class="muted mb-0">
-      If you’re building for artists (or building as one) and want workflows that don’t fight you —
-      you’ll probably like what’s here.
+      Trivox is built by Santiago, a senior Python developer focused on tooling, pipelines, automation,
+      and game-tech systems for creative work. It connects directly to the broader engineering work behind the ecosystem,
+      but the goal here is product execution: practical tools, usable systems, and shipped experiments.
     </p>
 
     <div class="mt-3">
