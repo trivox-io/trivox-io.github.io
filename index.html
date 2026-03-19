@@ -715,9 +715,9 @@
         <div class="collapse navbar-collapse" id="nav">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item"><a class="nav-link text-light" href="#products">Products</a></li>
-            <li class="nav-item"><a class="nav-link text-light" href="#proof">Proof</a></li>
-            <li class="nav-item"><a class="nav-link text-light" href="#games">Playable Builds</a></li>
-            <li class="nav-item"><a class="nav-link text-light" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link text-light" href="#proof">Work</a></li>
+            <li class="nav-item"><a class="nav-link text-light" href="#how">Approach</a></li>
+            <li class="nav-item"><a class="nav-link text-light" href="#founder">Founder</a></li>
           </ul>
         </div>
       </div>
@@ -725,10 +725,10 @@
   <header class="hero">
     <div class="container hero-grid">
       <div class="hero-copy">
-        <div class="eyebrow">Trivox / Systems For Creation And Delivery</div>
+        <div class="eyebrow">Trivox / Software Lab</div>
         <h1 class="hero-title">AI-powered tools, workflow systems, and game-tech products<a href="/incident-0213/" class="arg-signal" aria-hidden="true" tabindex="-1">​</a></h1>
         <p class="lead">
-          Trivox is my ecosystem for building practical software that makes creation,
+          Trivox builds practical software that makes creation,
           development, and shipping less painful.
         </p>
         <p class="muted hero-support mb-0">
@@ -744,8 +744,8 @@
           <span>Shipped demos</span>
         </div>
         <div class="hero-actions">
-          <a href="#proof" class="btn btn-accent btn-lg">View Proof</a>
-          <a href="#products" class="btn btn-ghost btn-lg">Explore Products</a>
+          <a href="#products" class="btn btn-accent btn-lg">Explore Products</a>
+          <a href="#proof" class="btn btn-ghost btn-lg">See the Work</a>
         </div>
         <div class="hero-links">
           <a href="https://github.com/trivox-io" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -755,12 +755,12 @@
       </div>
 
       <aside class="hero-panel">
-        <div class="panel-label">Execution Surface</div>
+        <div class="panel-label">Product Surface</div>
         <div class="signal-list">
           <div class="signal-item">
             <div class="signal-index">01</div>
             <div>
-              <strong>Senior-engineer systems work</strong>
+              <strong>Product-first systems work</strong>
               <p class="mb-0">Architecture, tooling, automation, and product decisions built to survive real production use.</p>
             </div>
           </div>
@@ -789,12 +789,96 @@
     </div>
   </header>
 
+  <section id="products" class="section container">
+    <div class="section-kicker">Products</div>
+    <h2 class="section-title">Product Tracks</h2>
+    <p class="muted section-intro">
+      Each product inside the Trivox ecosystem targets a different layer of the same problem:
+      making practical software and production workflows easier to build, operate, and ship.
+    </p>
+
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="cardx">
+          <div class="card-titlex">Mini Arcade <span class="badge-soft">Game-Tech Product</span></div>
+          <p class="muted"><span class="meta-label">What it is:</span> A Python-first arcade framework and product line for building small playable games, validating runtime architecture, and testing shipping workflows.</p>
+          <p class="muted"><span class="meta-label">What problem it solves:</span> It reduces the overhead of prototyping mechanics, reusing engine patterns, and turning experiments into real releases.</p>
+          <p class="muted"><span class="meta-label">Who it is for:</span> Developers and technical creators working on lightweight games, gameplay prototypes, and reusable game-tech foundations.</p>
+          <div class="tags">
+            <span>Python</span><span>Framework</span><span>Game Tech</span><span>Shipping</span>
+          </div>
+          <div class="mt-3">
+            <a href="https://github.com/trivox-io/mini-arcade" target="_blank" rel="noopener noreferrer">Repo →</a>
+            <span class="muted"> · </span>
+            <a href="https://rincorpes.itch.io/" target="_blank" rel="noopener noreferrer">Playable Releases →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="cardx">
+          <div class="card-titlex">Ashframe <span class="badge-soft">Workflow System</span></div>
+          <p class="muted"><span class="meta-label">What it is:</span> A systems-oriented product track for structuring project architecture, production flows, and repeatable workflow foundations across creative and technical work.</p>
+          <p class="muted"><span class="meta-label">What problem it solves:</span> It tackles setup chaos, inconsistent processes, and the friction that slows teams down between idea, implementation, and delivery.</p>
+          <p class="muted"><span class="meta-label">Who it is for:</span> Solo builders and small teams that need a clearer operating layer for production without adopting heavyweight studio infrastructure.</p>
+          <div class="tags">
+            <span>Workflow Systems</span><span>Architecture</span><span>Ops</span>
+          </div>
+          <div class="mt-3">
+            <a href="https://docs.trivox.io" target="_blank" rel="noopener noreferrer">Docs Hub →</a>
+            <span class="muted"> · </span>
+            <a href="https://github.com/trivox-io" target="_blank" rel="noopener noreferrer">Trivox GitHub →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="cardx">
+          <div class="card-titlex">llmix <span class="badge-soft">AI Workflow Utility</span></div>
+          <p class="muted"><span class="meta-label">What it is:</span> An AI-oriented utility layer for composing model-powered tasks into practical development and creative workflows instead of isolated prompt experiments.</p>
+          <p class="muted"><span class="meta-label">What problem it solves:</span> It reduces prompt sprawl, context handoff friction, and the repetition that shows up when AI is used without a system around it.</p>
+          <p class="muted"><span class="meta-label">Who it is for:</span> Developers and technical creators who want AI to behave like part of the toolchain, not a detached assistant tab.</p>
+          <div class="tags">
+            <span>AI</span><span>LLM Workflows</span><span>Developer Tools</span>
+          </div>
+          <div class="mt-3">
+            <a href="https://github.com/trivox-io/llmx" target="_blank" rel="noopener noreferrer">Repo →</a>
+            <span class="muted"> · </span>
+            <a href="https://docs.trivox.io" target="_blank" rel="noopener noreferrer">Docs Hub →</a>
+          </div>
+          <div class="mt-2 muted" style="font-size: 0.9rem;">
+            Public repo currently lives under <code>llmx</code>.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="cardx">
+          <div class="card-titlex">Evolving Ideas <span class="badge-soft">Planning Product</span></div>
+          <p class="muted"><span class="meta-label">What it is:</span> A structured ideation and planning tool for turning rough concepts into organized, versioned systems that are easier to build from.</p>
+          <p class="muted"><span class="meta-label">What problem it solves:</span> It reduces the chaos of early exploration by giving ideas a practical shape before they become backlog, architecture, or product decisions.</p>
+          <p class="muted"><span class="meta-label">Who it is for:</span> Builders who move between brainstorming, product thinking, and implementation and need their thinking to stay legible over time.</p>
+          <div class="tags">
+            <span>CLI</span><span>Planning</span><span>Versioned Ideas</span>
+          </div>
+          <div class="mt-3">
+            <a href="https://docs.trivox.io/evolving-ideas/" target="_blank" rel="noopener noreferrer">Docs →</a>
+            <span class="muted"> · </span>
+            <a href="https://github.com/trivox-io/evolving-ideas" target="_blank" rel="noopener noreferrer">Repo →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
   <section id="proof" class="section container">
-    <div class="section-kicker">Proof</div>
-    <h2 class="section-title">Case studies, demos, and engineering notes</h2>
+    <div class="section-kicker">Work</div>
+    <h2 class="section-title">Repositories, demos, and documentation</h2>
     <p class="section-intro">
-      The site should feel credible because the work is visible. These surfaces are where architecture,
-      operator experience, product thinking, and technical execution become inspectable artifacts.
+      The work is public and inspectable. These surfaces cover architecture decisions,
+      workflow tooling, and shipping validation expressed as real artifacts.
     </p>
 
     <div class="row g-4">
@@ -892,88 +976,6 @@
     </div>
   </section>
 
-  <section id="products" class="section container">
-    <div class="section-kicker">Products</div>
-    <h2 class="section-title">Products</h2>
-    <p class="muted section-intro">
-      These are the product tracks inside Trivox. Each one targets a different layer of the same problem:
-      making practical software and production workflows easier to build, operate, and ship.
-    </p>
-
-    <div class="row g-4">
-      <div class="col-lg-6">
-        <div class="cardx">
-          <div class="card-titlex">Mini Arcade <span class="badge-soft">Game-Tech Product</span></div>
-          <p class="muted"><span class="meta-label">What it is:</span> A Python-first arcade framework and product line for building small playable games, validating runtime architecture, and testing shipping workflows.</p>
-          <p class="muted"><span class="meta-label">What problem it solves:</span> It reduces the overhead of prototyping mechanics, reusing engine patterns, and turning experiments into real releases.</p>
-          <p class="muted"><span class="meta-label">Who it is for:</span> Developers and technical creators working on lightweight games, gameplay prototypes, and reusable game-tech foundations.</p>
-          <div class="tags">
-            <span>Python</span><span>Framework</span><span>Game Tech</span><span>Shipping</span>
-          </div>
-          <div class="mt-3">
-            <a href="https://github.com/trivox-io/mini-arcade" target="_blank" rel="noopener noreferrer">Repo →</a>
-            <span class="muted"> · </span>
-            <a href="https://rincorpes.itch.io/" target="_blank" rel="noopener noreferrer">Playable Releases →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-6">
-        <div class="cardx">
-          <div class="card-titlex">Ashframe <span class="badge-soft">Workflow System</span></div>
-          <p class="muted"><span class="meta-label">What it is:</span> A systems-oriented product track for structuring project architecture, production flows, and repeatable workflow foundations across creative and technical work.</p>
-          <p class="muted"><span class="meta-label">What problem it solves:</span> It tackles setup chaos, inconsistent processes, and the friction that slows teams down between idea, implementation, and delivery.</p>
-          <p class="muted"><span class="meta-label">Who it is for:</span> Solo builders and small teams that need a clearer operating layer for production without adopting heavyweight studio infrastructure.</p>
-          <div class="tags">
-            <span>Workflow Systems</span><span>Architecture</span><span>Ops</span>
-          </div>
-          <div class="mt-3">
-            <a href="https://docs.trivox.io" target="_blank" rel="noopener noreferrer">Docs Hub →</a>
-            <span class="muted"> · </span>
-            <a href="https://github.com/trivox-io" target="_blank" rel="noopener noreferrer">Trivox GitHub →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-6">
-        <div class="cardx">
-          <div class="card-titlex">llmix <span class="badge-soft">AI Workflow Utility</span></div>
-          <p class="muted"><span class="meta-label">What it is:</span> An AI-oriented utility layer for composing model-powered tasks into practical development and creative workflows instead of isolated prompt experiments.</p>
-          <p class="muted"><span class="meta-label">What problem it solves:</span> It reduces prompt sprawl, context handoff friction, and the repetition that shows up when AI is used without a system around it.</p>
-          <p class="muted"><span class="meta-label">Who it is for:</span> Developers and technical creators who want AI to behave like part of the toolchain, not a detached assistant tab.</p>
-          <div class="tags">
-            <span>AI</span><span>LLM Workflows</span><span>Developer Tools</span>
-          </div>
-          <div class="mt-3">
-            <a href="https://github.com/trivox-io/llmx" target="_blank" rel="noopener noreferrer">Repo →</a>
-            <span class="muted"> · </span>
-            <a href="https://docs.trivox.io" target="_blank" rel="noopener noreferrer">Docs Hub →</a>
-          </div>
-          <div class="mt-2 muted" style="font-size: 0.9rem;">
-            Public repo currently lives under <code>llmx</code>.
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-6">
-        <div class="cardx">
-          <div class="card-titlex">Evolving Ideas <span class="badge-soft">Planning Product</span></div>
-          <p class="muted"><span class="meta-label">What it is:</span> A structured ideation and planning tool for turning rough concepts into organized, versioned systems that are easier to build from.</p>
-          <p class="muted"><span class="meta-label">What problem it solves:</span> It reduces the chaos of early exploration by giving ideas a practical shape before they become backlog, architecture, or product decisions.</p>
-          <p class="muted"><span class="meta-label">Who it is for:</span> Builders who move between brainstorming, product thinking, and implementation and need their thinking to stay legible over time.</p>
-          <div class="tags">
-            <span>CLI</span><span>Planning</span><span>Versioned Ideas</span>
-          </div>
-          <div class="mt-3">
-            <a href="https://docs.trivox.io/evolving-ideas/" target="_blank" rel="noopener noreferrer">Docs →</a>
-            <span class="muted"> · </span>
-            <a href="https://github.com/trivox-io/evolving-ideas" target="_blank" rel="noopener noreferrer">Repo →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <div class="divider"></div>
 
   <section id="games" class="section container">
@@ -1042,9 +1044,9 @@
 
   <div class="divider"></div>
 
-  <section id="why" class="section container">
-    <div class="section-kicker">Why</div>
-    <h2 class="section-title">Why Trivox Exists</h2>
+  <section id="how" class="section container">
+    <div class="section-kicker">Approach</div>
+    <h2 class="section-title">How Trivox Works</h2>
     <div class="row g-4">
       <div class="col-md-6">
         <div class="mini-point">
@@ -1075,19 +1077,34 @@
 
   <div class="divider"></div>
 
-  <section id="about" class="section container">
-    <div class="section-kicker">About</div>
-    <h2 class="section-title">About Santiago</h2>
+  <section id="founder" class="section container">
+    <div class="section-kicker">Founder</div>
+    <h2 class="section-title">Built by Santiago Rincón</h2>
     <p class="muted">
-      Trivox is built by Santiago, a senior Python developer focused on tooling, pipelines, automation,
-      and game-tech systems for creative work. It connects directly to the broader engineering work behind the ecosystem,
-      but the goal here is product execution: practical tools, usable systems, and shipped experiments.
+      Trivox is built by Santiago Rincón — a senior Python developer focused on tooling, pipelines,
+      automation, and game-tech systems. The goal is product execution: practical tools, usable systems,
+      and shipped experiments built to operate under real constraints.
     </p>
 
     <div class="mt-3">
       <a href="https://github.com/alexsc6955" target="_blank" rel="noopener noreferrer">GitHub →</a>
       <span class="muted"> · </span>
       <a href="https://www.linkedin.com/in/alexsc6955/" target="_blank" rel="noopener noreferrer">LinkedIn →</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="section container" style="text-align: center; padding-top: 3.5rem; padding-bottom: 3.5rem;">
+    <div class="section-kicker" style="justify-content: center;">Get Involved</div>
+    <h2 class="section-title" style="max-width: 28ch; margin: 0 auto 1rem;">Start exploring the ecosystem</h2>
+    <p class="muted" style="max-width: 56ch; margin: 0 auto 2rem; line-height: 1.75;">
+      Browse the products, inspect the repositories, or follow the work as it ships.
+      Trivox is open and building in public.
+    </p>
+    <div style="display: flex; flex-wrap: wrap; gap: 0.85rem; justify-content: center;">
+      <a href="https://github.com/trivox-io" target="_blank" rel="noopener noreferrer" class="btn btn-accent btn-lg">View on GitHub</a>
+      <a href="https://docs.trivox.io" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-lg">Read the Docs</a>
     </div>
   </section>
 
